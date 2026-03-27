@@ -21,10 +21,10 @@ void selectionsort(T arr[],int n){
 }
 int main()
 {
-    float arr[] = {2.1,6.20,8.6,7,4};
+    float arr[] = {21,60,8,7,4};
     selectionsort(arr,5);
     for(int i = 0;i<5;i++){
-        cout<<arr[i];
+        cout<<arr[i]<<" ";
     }
     return 0;
 }
