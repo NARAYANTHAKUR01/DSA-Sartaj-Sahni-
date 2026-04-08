@@ -19,7 +19,7 @@ class Chain{
     int Length() const;
     bool Find(int k ,T&x)const;
     int Search(const T& x) const;
-    Chain<T> & Delete(int k,T&x);
+    Chain<T> & Delete(int k);
     Chain<T> & Insert(int k,T&x);
     void Output(ostream& out) const;
     private:
@@ -98,6 +98,31 @@ Chain<T>& Chain<T>::Insert(int k, T& x) {
 
     return *this;
 }
+template <class T>
+Chain<T> & Chain<T>::Delete(int k){
+   if(k<1 || !first){
+    return *this;
+   }
+   ChainNode<T> * p = first;
+   ChainNode<T> * q = first;
+   if(k == 1){
+    first = first->link;
+    return *this;
+   }
+   else{
+    for(int i = 1;i<k-1 && p;i++){
+        p =p->link;
+    }
+    if(p== NULL ||p->link == NULL){
+        return *this;
+    }
+    q = p->link;
+    p->link = q->link;
+    delete q;
+
+   }
+   return *this;
+}
 int main()
 {
     Chain<int> c;
@@ -143,6 +168,8 @@ int main()
         cout << "5th element not found" << endl;
 
 
+    cout<<c<<endl;
+    c.Delete(2);
     cout<<c;
     return 0;
 }
